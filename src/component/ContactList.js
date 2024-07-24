@@ -1,16 +1,31 @@
-import React from 'react'
-import SearchBox from './SearchBox'
-import ContactItem from './ContactItem'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from "react";
+import SearchBox from "./SearchBox";
+import ContactItem from "./ContactItem";
+import { useSelector } from "react-redux";
 
 const ContactList = () => {
-  const contactList = useSelector(state=>state.contactList)
+  const { contactList, searchName } = useSelector((state) => state);
+  let [filteredList, setFilteredList] = useState([]);
+  useEffect(() => {
+    if (searchName !== "") {
+      let list = contactList.filter((item) => item.name.includes(searchName));
+
+      setFilteredList(list);
+    } else {
+      setFilteredList(contactList);
+    }
+  }, [searchName, contactList]);
   return (
     <div>
-      <SearchBox/>
-      {contactList.map(item => <ContactItem item={item}/>)} 
-    </div> // 이럴떈 props쓰는게 좋다 리덕스 store가서 가져오는게 더 불편
-  )
-}
+      <SearchBox />
+      <div className="contact-list">
+        num:{filteredList.length}
+        {filteredList.map((item, index) => (
+          <ContactItem item={item} key={index} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-export default ContactList
+export default ContactList;

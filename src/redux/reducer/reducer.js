@@ -1,5 +1,6 @@
 let initialstate = {
   contactList: [], // 이 배열에다가 연락처들을 모아놓을것
+  searchName:"",
 };
 
 function reducer(state = initialstate, action) {
@@ -16,6 +17,8 @@ function reducer(state = initialstate, action) {
           },
         ],
       }; //
+      case 'SEARCHNAME':
+        return { ...state, searchName: payload.searchName };
       default : 
         return {...state};
   } //...state.contactList array에 있는 값은 유지를 하되, name과 phoneNumber값을 가져옴
