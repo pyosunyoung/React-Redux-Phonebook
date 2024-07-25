@@ -1,6 +1,7 @@
 let initialstate = {
   contactList: [], // 이 배열에다가 연락처들을 모아놓을것
   searchName:"",
+  starredContacts: [], // 즐겨찾기된 연락처의 이름을 저장할 배열
 };
 
 function reducer(state = initialstate, action) {
@@ -17,9 +18,21 @@ function reducer(state = initialstate, action) {
           },
         ],
       }; //
+      case 'REMOVE_CONTACT':
+      return {
+        ...state,
+        contactList: state.contactList.filter((contact) => contact.name !== payload.name), // 버튼을 누른 아이템과, 현재 list에 있는 item이 다른 것들만 추출해라 즉 버튼 누른것은 삭제된것
+      };
       case 'SEARCHNAME':
         return { ...state, searchName: payload.searchName };
-      default : 
+        case 'TOGGLE_STAR':
+          return {
+            ...state,
+            starredContacts: state.starredContacts.includes(payload.name)
+              ? state.starredContacts.filter(name => name !== payload.name)
+              : [...state.starredContacts, payload.name],
+          };
+        default : 
         return {...state};
   } //...state.contactList array에 있는 값은 유지를 하되, name과 phoneNumber값을 가져옴
 }

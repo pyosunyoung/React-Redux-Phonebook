@@ -1,3 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-image: linear-gradient(-225deg, #3BB78F 0%, #0BAB64 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .title {
   text-align: center;
 }
+
+.container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 컨테이너 높이 조정 */
+}
+
+.phonebook-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: rgb(255, 255, 255);
+  width: 550px;
+  height: 90vh;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: relative; /* position을 relative로 변경 */
+}
+
+.floating-button {
+  position: absolute; /* position을 absolute로 변경 */
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  padding: 0;
+  color: white;
+}
+
+.modal-90w {
+  max-width: 90%;
+}
+
+.modal-content {
+  animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.contact-item {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: -10px;
+}
+
+.contact-item:hover {
+  background-color: #f0f0f0;
+}
+
+.contact-item .dropdown-menu {
+  padding: 0;
+  width: 150px; /* 원하는 너비로 설정 */ /* 원하는 최소 너비 설정 */
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
+  border-radius: 5px;
+}
+
+.contact-item .dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px; /* 간격 조정 */
+}
+
+.contact-item .dropdown-item svg {
+  margin-right: 10px;
+}
+
+.contact-list-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 43vh; /* 원하는 최대 높이로 설정 */
+  padding-right: 15px; /* 스크롤바가 생기더라도 내용이 잘리지 않게 여백 추가 */
+}
+
+.contact-item {
+  margin-bottom: 0px;
+}
+
+.contact-list-column {
+  height: 80vh;
+}
+
+.item-text-margin {
+  margin-right: 15px;
+}
+
+.item-text-margin1 {
+  margin-right: -15px;
+}
+
+.starSearch {
+  margin-bottom: 3px;
+  margin-right: 3px;
+}
+
+.close-button {
+  width: 60px;
+}
+
+
+

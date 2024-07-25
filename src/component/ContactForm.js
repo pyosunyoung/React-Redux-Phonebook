@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { Button, Form, Col, Row } from 'react-bootstrap';
+
 import { useDispatch } from 'react-redux';
 
-const ContactForm = () => {
+const ContactForm = ({ handleClose }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState(0);
@@ -26,9 +26,19 @@ const ContactForm = () => {
         <Form.Label>전화번호</Form.Label>
         <Form.Control type="number" placeholder="전화번호를 입력해주세요"onChange={(event) => setPhoneNumber(event.target.value)} />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        추가
-      </Button>
+
+      <Row>
+        <Col lg={10}>
+          <Button variant="success" type="submit">
+            추가
+          </Button>
+        </Col>
+        <Col lg={2} >
+          <Button className='close-button' variant="dark" onClick={handleClose}>
+          닫기
+          </Button>
+        </Col>
+      </Row>
     </Form> 
     </div>// type submit은 onsubmit이 onclick과 같은느낌임
   )

@@ -16,10 +16,10 @@ const ContactList = () => {
     }
   }, [searchName, contactList]);
   return (
-    <div>
+    <div className="contact-list-container">
       <SearchBox />
       <div className="contact-list">
-        num:{filteredList.length}
+        {/* 저장된 연락처 : {`${filteredList.length}개`} */}
         {filteredList.map((item, index) => (
           <ContactItem item={item} key={index} />
         ))}
